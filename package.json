@@ -1,0 +1,32 @@
+{
+  "name": "gameapp-node",
+  "version": "1.0.0",
+  "description": "board game social app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeatonBrazil/313-node-gameApp.git"
+  },
+  "keywords": [
+    "Heroku",
+    "Github",
+    "Board",
+    "Game"
+  ],
+  "author": "Keaton Sant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeatonBrazil/313-node-gameApp/issues"
+  },
+  "homepage": "https://github.com/KeatonBrazil/313-node-gameApp#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "pg": "^7.14.0"
+  }
+}
