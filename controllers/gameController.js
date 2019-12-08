@@ -9,12 +9,20 @@ function getGameList(req, res){
    
 }
 
-function getGame(req, res){
+function searchByTitle(req, res){
     //var id = req.query.id
-    var id = req.params.id
-    console.log("Getting board game with param id:" + id)
+    var title = req.query.title
+    console.log("Getting board game with param id:" + title)
 
-    gameController.getGameById(id, function(results){
+    gameController.searchByTitle(title, function(results){
+        console.log(results)
+        res.json(results)
+    })
+}
+
+function searchByPub(req, res){
+    var publisher = req.query.publisher
+    gameController.searchByPub(publisher, function(results){
         console.log(results)
         res.json(results)
     })
@@ -32,4 +40,4 @@ function addGame(req, res){
     })
 }
 
-module.exports={getGameList: getGameList, getGame: getGame, addGame: addGame}
+module.exports={getGameList: getGameList, searchByTitle: searchByTitle, searchByPub: searchByPub, addGame: addGame}

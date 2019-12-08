@@ -16,7 +16,8 @@ app.use(express.urlencoded({extended: true}))
 
 app.get("/boardGames", gameController.getGameList)
 
-app.get("/boardGame/:id", gameController.getGame)
+app.get("/searchByTitle", gameController.searchByTitle)
+app.get("/searchByPub", gameController.searchByPub)
 
 app.post("/addGame", gameController.addGame)
 
