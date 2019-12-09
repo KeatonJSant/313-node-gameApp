@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body onload="allGames()">
     <script src="../js/game-clientside.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -15,7 +15,8 @@
     <input type="text" id="gameTitle" placeholder="Game Title">
     <input type="number" id="time" placeholder="Time Length (Minutes)">
     <input type="number" id="complexity" min="0.00" max="5.00" step=".01" placeholder="Complexity">
-    <input type="number" id="num_players" placeholder="Max Number of Players"> <br>
+    <input type="number" id="num_players" placeholder="Max Number of Players">
+    <input type="text" id="publisher" placeholder="Publisher"> <br>
     <button onclick="addGame()">Add Game</button>
 
     <h1>Search Board Games</h1>

@@ -1,8 +1,8 @@
-const gameController = require("../models/gameModel.js")
+const gameModel = require("../models/gameModel.js")
 
 function getGameList(req, res){
     console.log("Getting all Board Games...")
-    gameController.getAllGames(function (results){
+    gameModel.getAllGames(function (results){
         console.log(results)
         res.json(results)
     })
@@ -14,7 +14,7 @@ function searchByTitle(req, res){
     var title = req.query.title
     console.log("Getting board game with param id:" + title)
 
-    gameController.searchByTitle(title, function(results){
+    gameModel.searchByTitle(title, function(results){
         console.log(results)
         res.json(results)
     })
@@ -22,7 +22,7 @@ function searchByTitle(req, res){
 
 function searchByPub(req, res){
     var publisher = req.query.publisher
-    gameController.searchByPub(publisher, function(results){
+    gameModel.searchByPub(publisher, function(results){
         console.log(results)
         res.json(results)
     })
@@ -34,10 +34,42 @@ function addGame(req, res){
     var complexity = req.body.complexity
     var num_players = req.body.num_players
 
-    gameController.postGame(title, time, complexity, num_players, function(results){
+    console.log("Title: " + title + " Time: " + time + " Complexity: " + complexity + " Number of Players: " + num_players)
+
+    gameModel.postGame(title, time, complexity, num_players, function(results){
         console.log(results)
         res.json(results)
     })
 }
 
-module.exports={getGameList: getGameList, searchByTitle: searchByTitle, searchByPub: searchByPub, addGame: addGame}
+function addPub(req, res){
+    var publisher = req.body.publisher
+
+    console.log("Publisher: " + publisher)
+
+    gameModel.postPub(publisher, function(results){
+        console.log(results)
+        res.json(results)
+    })
+}
+
+function addUniqueGame(req, res){
+    var game_id = req.body.game
+    var pub_id = req.body.pub
+
+    console.log(game_id)
+    console.log(pub_id)
+
+    gameModel.postUniqueGame(game_id, pub_id, function(results){
+        console.log(results)
+        res.json(results)
+    })
+}
+
+module.exports={
+    getGameList: getGameList, 
+    searchByTitle: searchByTitle, 
+    searchByPub: searchByPub, 
+    addGame: addGame, 
+    addPub: addPub,
+    addUniqueGame: addUniqueGame}

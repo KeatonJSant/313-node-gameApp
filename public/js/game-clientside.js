@@ -35,6 +35,17 @@ function searchByPub() {
     })
 }
 
+function allGames() {
+    $.get("/boardGames", function (data){
+        $("#ulAllGames").html("")
+        for (var x = 0; x < data.list.length; x++) {
+            var game = data.list[x]
+
+            $("#ulAllGames").append("<li>" + game.title + "</li>")
+        }
+    })
+}
+
 function addGame() {
     console.log("Adding Board Game...")
 
@@ -42,8 +53,20 @@ function addGame() {
     var time = $("#time").val()
     var complexity = $("#complexity").val()
     var num_players = $("#num_players").val()
+    var pub_name = $("#publisher").val()
 
-    $.post("/addGame")
+    $.post("/addGame", {title:title, time:time, complexity:complexity, num_players:num_players}, function (data_game) {
+        console.log("game: " + data_game[0].game_id)
+        $.post("/addPub", {publisher:pub_name}, function(data_pub){
+            console.log("pub: " + data_pub[0].pub_id)
+            $.post("/addUniqueGame", {game:data_game[0].game_id, pub:data_pub[0].pub_id}, function(data_unique_game) {
+                console.log(data_unique_game)
+                allGames()
+            })
+        })    
+    })
+
+    
 
 }
 
