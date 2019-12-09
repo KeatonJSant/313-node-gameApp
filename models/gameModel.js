@@ -21,9 +21,9 @@ function getAllGames(callback){
 }
 
 function searchByTitle(title, callback){
-    var sql = `SELECT title FROM board_game WHERE title = '${title}'`
-    
-    pool.query(sql, function(err, result) {
+    var sql = `SELECT title FROM board_game WHERE title = $1::text`
+    var params = [title]
+    pool.query(sql, params, function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
@@ -39,9 +39,9 @@ function searchByTitle(title, callback){
 }
 
 function searchByPub(publisher, callback){
-    var sql = `SELECT title FROM board_game bg LEFT JOIN game_pub gp ON bg.game_id = gp.game_id LEFT JOIN publisher p ON gp.pub_id = p.pub_id WHERE pub_name = '${publisher}'`
-    
-    pool.query(sql, function(err, result) {
+    var sql = `SELECT title FROM board_game bg LEFT JOIN game_pub gp ON bg.game_id = gp.game_id LEFT JOIN publisher p ON gp.pub_id = p.pub_id WHERE pub_name = $1::text`
+    var params = [publisher]
+    pool.query(sql, params, function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")
@@ -57,9 +57,9 @@ function searchByPub(publisher, callback){
 }
 
 function postGame(title, time, complexity, num_players, callback){
-    var sql = `INSERT INTO board_game (title, time_length_min, complexity, num_players) VALUES (${title}, ${time}, ${complexity}, ${num_players})`
-    
-    pool.query(sql, function(err, result) {
+    var sql = `INSERT INTO board_game (title, time_length_min, complexity, num_players) VALUES ($1::text, $2::int, $3::numeric, $4::int)`
+    var params = [title, time, complexity, num_players]
+    pool.query(sql, params, function(err, result) {
         // If an error occurred...
         if (err) {
             console.log("Error in query: ")

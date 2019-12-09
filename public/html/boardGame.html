@@ -9,18 +9,32 @@
 <body>
     <script src="../js/game-clientside.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
+
+    <h1>Add Board Game</h1>
+
+    <input type="text" id="gameTitle" placeholder="Game Title">
+    <input type="number" id="time" placeholder="Time Length (Minutes)">
+    <input type="number" id="complexity" min="0.00" max="5.00" step=".01" placeholder="Complexity">
+    <input type="number" id="num_players" placeholder="Max Number of Players"> <br>
+    <button onclick="addGame()">Add Game</button>
+
     <h1>Search Board Games</h1>
 
     <input type="text" id="title" placeholder="Board Game Title"> <button onclick="searchByGame()">Search by Game Title</button>
     <input type="text" id="publisher" placeholder="Publisher Name"> <button onclick="searchByPub()">Search by Publisher</button>
 
     <div>
-        <h2>
+        <h2> Results </h2>
             <ul id="ulGames">
 
             </ul>
-        </h2>
+        
     </div>
+
+    <h1>All Board Games</h1>
+
+    <ul id="ulAllGames">
+
+    </ul>
 </body>
 </html>
