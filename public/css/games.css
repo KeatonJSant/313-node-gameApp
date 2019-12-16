@@ -31,3 +31,22 @@ table, td, th {
   .table {
     overflow-x:auto;
   }
+
+  /*iphone 5 and 5s and iphone 6, 7, 8*/
+@media only screen and (min-device-width : 320px) and (max-device-width : 736px) {
+    .border {
+        margin: 1% 5%;
+    }
+    
+}
+/*iphone X*/
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) {
+    .border {
+        margin: 1% 5%;
+    }
+    
+}
+
+@media only screen and (min-device-width : 813px) and (max-width: 935px) {
+    
+}
