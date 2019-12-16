@@ -3,7 +3,7 @@ const pool = db.pool
 
 function getAllGames(callback){
     //var sql = `SELECT title FROM game_pub gp LEFT JOIN board_game bg ON gp.game_id = bg.game_id`
-    var sql = `SELECT title FROM board_game`
+    var sql = `SELECT game_id, title, time_length_min, complexity, num_players FROM board_game`
 
     pool.query(sql, function(err, result) {
         // If an error occurred...
@@ -21,9 +21,9 @@ function getAllGames(callback){
     })    
 }
 
-function searchByTitle(title, callback){
-    var sql = `SELECT title FROM board_game WHERE title = $1::text`
-    var params = [title]
+function searchByTitle(id, callback){
+    var sql = `SELECT game_id, title, time_length_min, complexity, num_players FROM board_game WHERE game_id = $1`
+    var params = [id]
     pool.query(sql, params, function(err, result) {
         // If an error occurred...
         if (err) {
@@ -40,7 +40,7 @@ function searchByTitle(title, callback){
 }
 
 function searchByPub(publisher, callback){
-    var sql = `SELECT title FROM board_game bg LEFT JOIN unique_game ug ON bg.game_id = ug.game_id LEFT JOIN publisher p ON ug.pub_id = p.pub_id WHERE pub_name = $1::text`
+    var sql = `SELECT title, time_length_min, complexity, num_players FROM board_game bg LEFT JOIN unique_game ug ON bg.game_id = ug.game_id LEFT JOIN publisher p ON ug.pub_id = p.pub_id WHERE pub_name = $1::text`
     var params = [publisher]
     pool.query(sql, params, function(err, result) {
         // If an error occurred...
@@ -48,13 +48,53 @@ function searchByPub(publisher, callback){
             console.log("Error in query: ")
             console.log(err);
         } else {
+            
             var results = {
                 list:result.rows
             }
+            console.log("Returning Publisher info request: " + results)
             callback(results)
         }
       
     })
+}
+
+function getPub(id, callback){
+    var sql = `SELECT pub_name FROM unique_game ug LEFT JOIN board_game bg ON bg.game_id = ug.game_id LEFT JOIN publisher p ON p.pub_id = ug.pub_id WHERE ug.game_id = $1`
+    var params = [id]
+    pool.query(sql, params, function(err, result){
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        } else {
+            
+            var results = {
+                list:result.rows
+            }
+            console.log("Returning Publisher names request: " + results)
+            callback(results)
+        }
+    })
+
+}
+
+function getIdByTitle(title, callback){
+    var sql = `SELECT game_id FROM board_game WHERE title = $1`
+    var params = [title]
+    pool.query(sql, params, function(err, result){
+        if (err) {
+            console.log("Error in query: ")
+            console.log(err);
+        } else {
+            
+            var results = {
+                list:result.rows
+            }
+            console.log("Returning Game Id request: " + results)
+            callback(results)
+        }
+    })
+    
 }
 
 function postGame(title, time, complexity, num_players, callback){
@@ -112,6 +152,8 @@ module.exports={
     getAllGames: getAllGames,
     searchByTitle: searchByTitle,
     searchByPub: searchByPub,
+    getPub: getPub,
+    getIdByTitle: getIdByTitle,
     postGame: postGame,
     postPub: postPub,
     postUniqueGame: postUniqueGame

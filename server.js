@@ -14,10 +14,16 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.get("/", (req, res)=>{
+    res.sendFile("boardGame.html", {root:__dirname + "/public/html"})
+})
+
 app.get("/boardGames", gameController.getGameList)
 
 app.get("/searchByTitle", gameController.searchByTitle)
 app.get("/searchByPub", gameController.searchByPub)
+app.get("/getPub", gameController.getPub)
+app.get("/getIdByTitle", gameController.getIdByTitle)
 
 app.post("/addGame", gameController.addGame)
 app.post("/addPub", gameController.addPub)

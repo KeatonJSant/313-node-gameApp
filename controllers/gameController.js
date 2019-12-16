@@ -11,10 +11,10 @@ function getGameList(req, res){
 
 function searchByTitle(req, res){
     //var id = req.query.id
-    var title = req.query.title
-    console.log("Getting board game with param id:" + title)
+    var id = req.query.id
+    console.log("Getting board game with param id:" + id)
 
-    gameModel.searchByTitle(title, function(results){
+    gameModel.searchByTitle(id, function(results){
         console.log(results)
         res.json(results)
     })
@@ -22,7 +22,24 @@ function searchByTitle(req, res){
 
 function searchByPub(req, res){
     var publisher = req.query.publisher
+    console.log("Requested Publisher: " + publisher)
     gameModel.searchByPub(publisher, function(results){
+        console.log(results)
+        res.json(results)
+    })
+}
+
+function getPub(req, res){
+    var id = req.query.id
+    gameModel.getPub(id, function(results){
+        console.log(results)
+        res.json(results)
+    })
+}
+
+function getIdByTitle(req, res){
+    var title = req.query.title
+    gameModel.getIdByTitle(title, function(results){
         console.log(results)
         res.json(results)
     })
@@ -70,6 +87,8 @@ module.exports={
     getGameList: getGameList, 
     searchByTitle: searchByTitle, 
     searchByPub: searchByPub, 
+    getPub: getPub,
+    getIdByTitle: getIdByTitle,
     addGame: addGame, 
     addPub: addPub,
     addUniqueGame: addUniqueGame}
