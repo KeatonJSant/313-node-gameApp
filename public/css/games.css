@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(20, 57, 97);
+    margin: 0;
+}
+
+.border {
+    margin: 1% 25%;
+}
+
+.main {
+    background-color: rgb(255, 123, 0);
+    padding: 10px;
+
+}
+
+table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
+
+  .table {
+    overflow-x:auto;
+  }

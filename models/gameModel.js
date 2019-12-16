@@ -21,9 +21,9 @@ function getAllGames(callback){
     })    
 }
 
-function searchByTitle(id, callback){
-    var sql = `SELECT game_id, title, time_length_min, complexity, num_players FROM board_game WHERE game_id = $1`
-    var params = [id]
+function searchByTitle(title, callback){
+    var sql = `SELECT game_id, title, time_length_min, complexity, num_players FROM board_game WHERE title = $1`
+    var params = [title]
     pool.query(sql, params, function(err, result) {
         // If an error occurred...
         if (err) {

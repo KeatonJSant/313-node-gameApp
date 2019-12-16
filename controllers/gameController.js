@@ -11,10 +11,10 @@ function getGameList(req, res){
 
 function searchByTitle(req, res){
     //var id = req.query.id
-    var id = req.query.id
-    console.log("Getting board game with param id:" + id)
+    var title = req.query.title
+    console.log("Getting board game with param id:" + title)
 
-    gameModel.searchByTitle(id, function(results){
+    gameModel.searchByTitle(title, function(results){
         console.log(results)
         res.json(results)
     })
