@@ -123,14 +123,18 @@ th, td {
     .border {
         margin: 1% 5%;
     }
-    
+    h1 {
+        text-align: center;
+    }
 }
 /*iphone X*/
 @media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) {
     .border {
         margin: 1% 5%;
     }
-    
+    h1 {
+        text-align: center;
+    }
 }
 
 @media only screen and (min-device-width : 813px) and (max-width: 935px) {
