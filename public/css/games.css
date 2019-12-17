@@ -1,6 +1,14 @@
+/* background coloring, borders, margins, and padding */
+
 body {
-    background-color: rgb(20, 57, 97);
+    background-color:black;
     margin: 0;
+    font-family: Work Sans,Open Sans,Helvetica,Arial,sans-serif;
+    
+}
+
+header {
+    font-size: 200%;
 }
 
 .border {
@@ -8,29 +16,101 @@ body {
 }
 
 .main {
-    background-color: rgb(255, 123, 0);
+    background-color: turquoise;
     padding: 10px;
 
 }
 
+/* Fonts and word aligning */
+
+.t {
+    color: turquoise;
+    
+}
+
+.center {
+    text-align: center;
+}
+
+/* Buttons and inputs */
+
+button {
+    background-color: black;
+    color: turquoise;
+    border-radius: 25px;
+    border-color: turquoise;
+    padding: 10px;
+    font-size: 100%;
+    border-style: solid;
+}
+
+button:hover {
+    background-color: turquoise;
+    color: black;
+    border-color: black;
+    
+}
+
+input {
+    border-style: solid;
+    border-color: turquoise;
+    background-color: black;
+    color:turquoise;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 90%;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+/* container */
+
+.container {
+    display: flex;
+   
+}
+
+.left {
+    flex: 50%;
+    text-align: center;
+}
+
+.right {
+    flex: 50%;
+    text-align: center;
+}
+
+/* Tables */
+
 table, td, th {  
     border: 1px solid #ddd;
     text-align: left;
-  }
+}
   
-  table {
+table {
     border-collapse: collapse;
     width: 100%;
     background-color: white;
-  }
+    color: black;
+}
   
-  th, td {
+th, td {
     padding: 15px;
-  }
+}
 
-  .table {
+.table {
     overflow-x:auto;
-  }
+}
+
+/* Mobile Settings */
 
   /*iphone 5 and 5s and iphone 6, 7, 8*/
 @media only screen and (min-device-width : 320px) and (max-device-width : 736px) {

@@ -11,7 +11,11 @@
     <script src="../js/game-clientside.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <div class="border">
-    <div class="main">
+    <div class="center t">
+        <header><h1>Welcome</h1></header>
+    </div>
+    <br>
+    <div class="t">
         <h1>Add Board Game</h1>
 
         <input type="text" id="gameTitle" placeholder="Game Title">
@@ -20,18 +24,28 @@
         <input type="number" id="num_players" placeholder="Max Number of Players">
         <input type="text" id="publisher" placeholder="Publisher"> <br>
         <button onclick="addGame()">Add Game</button>
-
+    </div>
+    <br>
+    <div class="t">
         <h1>Search Board Games</h1>
-
-        <input type="text" id="title" placeholder="Board Game Title"> <button onclick="searchByGame()">Search by Game Title</button>
-        <input type="text" id="pub" placeholder="Publisher Name"> <button onclick="searchByPub()">Search by Publisher</button>
-
+        <div class="container">
+            <div class="left">
+                <input type="text" id="title" placeholder="Board Game Title"> <br><br>
+                <button onclick="searchByGame()">Search by Game Title</button>
+            </div>
+            <div class="right">
+                <input type="text" id="pub" placeholder="Publisher Name"> <br><br>
+                <button onclick="searchByPub()">Search by Publisher</button>
+            </div>
+        </div><br>
         <div class="table">
-            <h2> Results </h2>
             <table id="tbGames">
 
             </table>
         </div>
+    </div>
+    <br>
+    <div class="t">
         <div class="table">
             <h1>All Board Games</h1>
             <table id="tbAllGames">
