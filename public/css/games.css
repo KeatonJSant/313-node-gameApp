@@ -59,6 +59,7 @@ input {
     padding: 10px;
     border-radius: 3px;
     font-size: 90%;
+    width: 8.5em;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -86,6 +87,11 @@ input[type=number] {
 .right {
     flex: 50%;
     text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* Tables */
